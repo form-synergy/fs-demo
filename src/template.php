@@ -86,7 +86,7 @@ class Fs_Demo
          */
 
         // 1) Register the website with FormSynergy first
-        $resources = FS::Resource('full-demo');
+        $resources = FS::Resource('fs-demo');
         $website = $resources->Get('website');
         if (!$website) {
             $api->Create('website')
