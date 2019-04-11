@@ -150,7 +150,7 @@
         /**
          * Define a directory to store transaction
          */
-        FS::Storage($variables['storage'], 'local-storage');
+         FS::Storage($variables['storage'][0], $variables['storage'][1]);
 
         /**
          * API configuration
@@ -167,7 +167,7 @@
         /**
          * Create a resource storage
          */
-        $resources = FS::Resource('full-demo');
+        $resources = FS::Resource('fs-demo');
 
         /**
          * Let's check if the full demo script
