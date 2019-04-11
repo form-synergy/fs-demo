@@ -20,10 +20,7 @@ composer require form-synergy/fs-demo
 require '/vendor/autoload.php';
 ```
 
-You will need to retrieve your credentials in the Form Synergy console.
-
-Console Access: https://formsynergy.com/console/
-
+You will need to retrieve your credentials in the Form Synergy console: https://formsynergy.com/console/
 
 ## To Load Package
 
