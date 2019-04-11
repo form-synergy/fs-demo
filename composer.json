@@ -1,0 +1,32 @@
+{
+    "name": "form-synergy/fs-demo",
+    "description": "This package will create and update multiple resources using the FormSynergy PHP API, along with javaScript, HTML and CSS.",
+    "keywords": [
+        "form",
+        "synergy",
+        "package",
+        "web strategy",
+        "objectives",
+        "interactions",
+        "contact form",
+        "new letter subscription",
+        "request call back"
+    ],
+    "homepage": "https://formsynergy.com/",
+    "license": "MIT",
+    "authors": [{
+        "name": "Joseph G Chamoun",
+        "email": "formsynergy@gmail.coom",
+        "homepage": "https://github.com/form-synergy"
+    }],
+    "require": {
+        "php": ">=7.0",
+        "form-synergy/php-api": ">=1.3.*"
+    },
+    "replace": {
+        "form-synergy/full-demo": "self.version"
+    },
+    "autoload": {
+        "files": ["src/load.php", "src/template.php"]
+    }
+}
