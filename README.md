@@ -3,14 +3,18 @@
 This package will create and update multiple resources using the FormSynergy PHP API.
 
 It will automatically configure the following using the API
-```code see form-synergy/fs-demo/src/template.php ```
+```code 
+see form-synergy/fs-demo/src/template.php 
+```
     - Site registration and verification
     - Create a strategy.
     - Create Multiple objectives.
     - Multiple modules, including interactions
  
 In order to see how everything works together, take a look at the demo page, where you will find, data-fs attributes to trigger events and manage displays.
-```code see form-synergy/fs-demo/src/app.php ```
+```code 
+see form-synergy/fs-demo/src/app.php 
+```
     - Demo page using HTML, CSS, javaScript, jQuery and SVG 
 
 ## Install using composer
