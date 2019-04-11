@@ -24,7 +24,7 @@ namespace FormSynergy;
  * @copyright   2019 FormSynergy.com
  * @licence     https://github.com/form-synergy/template-essentials/blob/dev-master/LICENSE MIT
  * @package     fs-demo
- * @version     1.3.6
+ * @version     1.3.6.2
  */
 
 require_once 'vendor/autoload.php';
