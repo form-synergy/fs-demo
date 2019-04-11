@@ -1,8 +1,6 @@
 # Form Synergy Demo
 
-This package will create and update multiple resources using the FormSynergy PHP API.
-
-It will automatically configure the following using the API
+This package will automatically configure the following using the API
 
 - Site registration and verification
 - Create a strategy.
