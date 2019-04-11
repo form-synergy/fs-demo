@@ -21,7 +21,7 @@
     }],
     "require": {
         "php": ">=7.0",
-        "form-synergy/php-api": "1.3.*"
+        "form-synergy/php-api": "^1.3.6"
     },
     "replace": {
         "form-synergy/full-demo": "self.version"
