@@ -546,9 +546,8 @@
 
     <!-- ./ Modal display -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-
-    <script src="https://formsynergy.com/js/fs-client-1.0.js"
-        integrity="sha256-5WmTWOm3dRoPXQzNYrT+XvKTuNVKu1rVZe/K+mKAaHU=" id="formsynergy-1.0" crossorigin="anonymous">
+    <script src="https://formsynergy.com/js/fs-client-1.0.js" id="formsynergy-1.0">
+                                                                                  
     </script>
 
     <script>
