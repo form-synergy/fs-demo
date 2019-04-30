@@ -32,7 +32,7 @@ require_once 'vendor/autoload.php';
  * 
  * This package will load and initiate the demo package.
  */
-\FormSynergy\Full_Demo([
+\FormSynergy\Fs_Demo([
     'strategy'       '', // Eg: Form Synergy Demo
     'profileid' =>      '', // You can find the profile id under the profile tab: https://formsynergy.com/console/
     'website' => [
