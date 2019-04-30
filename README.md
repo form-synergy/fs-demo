@@ -2,19 +2,21 @@
 
 This package will automatically configure the following using the API
 
-- Site registration and verification
-- Create a strategy.
-- Create Multiple objectives.
-- Multiple modules, including interactions
-- Demo page using HTML, CSS, javaScript, jQuery and SVG 
+* Site registration and verification
+* Create a strategy.
+* Create Multiple objectives.
+* Multiple modules, including interactions
+* Demo page using HTML, CSS, javaScript, jQuery and SVG
 
 ## Install using composer
-```bash
+
+``` bash
 composer require form-synergy/fs-demo
 ```
 
 ## Include the library
-```php
+
+``` php
 require '/vendor/autoload.php';
 ```
 
@@ -22,7 +24,7 @@ You will need to retrieve your credentials in the Form Synergy console: https://
 
 ## To Load Package
 
-```PHP
+``` PHP
 require_once 'vendor/autoload.php';
 
 /**
@@ -42,7 +44,7 @@ require_once 'vendor/autoload.php';
     'config' => [
         'apikey' =>     '', // API Key: Under the API access tab: https://formsynergy.com/console/
         'secretkey' =>  '', // API Key: Under the API access tab: https://formsynergy.com/console/
-        
+
     ],
     'contact' => [          // Alerts and notifications contact.
         'fname' =>      '', 

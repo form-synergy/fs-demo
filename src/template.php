@@ -13,8 +13,6 @@ namespace FormSynergy;
  *  - Create Multiple objectives.
  *  - Multiple modules, including interactions
  *
- * In order to see how everything works together, take a look at the demo page,
- * where you will find, data-fs attributes to trigger events and manage displays.
  *  @see form-synergy/fs-demo/src/app.php
  *  - Demo page using HTML, CSS, javaScript, jQuery and SVG
  *
@@ -24,7 +22,7 @@ namespace FormSynergy;
  * @copyright   2019 FormSynergy.com
  * @licence     https://github.com/form-synergy/template-essentials/blob/dev-master/LICENSE MIT
  * @package     fs-demo
- * @version     1.3.6.4
+ * @version     1.4.1.0
  */
 
 require_once 'vendor/autoload.php';
@@ -46,10 +44,8 @@ use \FormSynergy\Fs as FS;
  */
 class Fs_Demo
 {
-
     public static function Run($data)
     {
-
         /**
          * Load account, this action requires the profile id
          */
@@ -63,26 +59,25 @@ class Fs_Demo
          *  2) Include meta tag
          *  3) Verify the site
          *  4) Creating a strategy
-         *  5) Create an individual module using API for the address
-         *  6) Create an individual module using API to request the phone number
-         *  7) Create an individual module using API to request the name
-         *  8) Create an individual module using API to request the email address
+         *  5) Create a module using API for the address
+         *  6) Create a module using API to request the phone number
+         *  7) Create a module using API to request the name
+         *  8) Create a module using API to request the email address
          *  9) This module is the final interaction before displaying the email module
          *  10) This module will try to engage with visitors
          *  11) Another module to engage with visitors
          *  12) Another module to engage with visitors
          *  13) This module will provide details on what's next
-         *  14) Update enforce email address module, connect back to email module
-         *  15) Creating modules from pre-packaged modules
-         *  16) Create an individual module using API to enforce news letter subscription
-         *  17) Update the contact form module created from packages
-         *  18) Update the request call back form module created from packages
-         *  19) Update the news letter subscription form module created from packages
-         *  20) Create an objective: Contact request with email
-         *  21) Create an objective: Contact request: Email, name and phone number
-         *  22) Create an objective: Request call back
-         *  23) Create an objective: News letter subscription
-         *  24) Update resource storage
+         *  14) Creating modules from pre-packaged modules
+         *  15) Create a module using API to enforce news letter subscription
+         *  16) Update the contact form module created from packages
+         *  17) Update the request call back form module created from packages
+         *  18) Update the news letter subscription form module created from packages
+         *  19) Create an objective: Contact request with email
+         *  20) Create an objective: Contact request: Email, name and phone number
+         *  21) Create an objective: Request call back
+         *  22) Create an objective: News letter subscription
+         *  23) Update resource storage
          */
 
         // 1) Register the website with FormSynergy first
@@ -107,6 +102,7 @@ class Fs_Demo
         if ($website && !isset($website['siteid'])) {
             exit('Something went wrong! Unable to load site id!');
         }
+
         /**
          * Display the FormSynergy meta.
          */
@@ -131,7 +127,7 @@ class Fs_Demo
             ])
             ->As('strategy');
 
-        // 5) Create an individual module for the address.
+        // 5) Create a module for the address.
         $api->Create('module')
             ->Attributes([
                 'siteid' => $api->_website('siteid'),
@@ -144,6 +140,7 @@ class Fs_Demo
                         'body' => 'Can we have you address please!!!',
                     ],
                 ],
+
                 // Set event to respond instantly
                 'events' => [
                     ['type' => 'instant'],
@@ -161,13 +158,14 @@ class Fs_Demo
                         'validationType' => 'address',
                     ],
                 ],
+
                 // Set responses
                 'success' => 'Thank you for contacting us',
                 'dismiss' => 'Thanks for the visit',
             ])
             ->As('address');
 
-        // 6) Create an individual module to request the phone number.
+        // 6) Create a module to request the phone number.
         $api->Create('module')
             ->Attributes([
                 'siteid' => $api->_website('siteid'),
@@ -205,7 +203,7 @@ class Fs_Demo
             ])
             ->As('phone');
 
-        // 7) Create an individual module to request the name.
+        // 7) Create a module to request the name.
         $api->Create('module')
             ->Attributes([
                 'siteid' => $api->_website('siteid'),
@@ -227,6 +225,7 @@ class Fs_Demo
                         // x represents the index of a field.
                         'x' => 0,
                         'type' => 'text',
+
                         // system name will tell the processor how to handle the data.
                         'system' => 'fname',
                         'label' => 'First Name',
@@ -254,7 +253,7 @@ class Fs_Demo
             ])
             ->As('name');
 
-        // 8) Create an individual module to request the email address.
+        // 8) Create a module to request the email address.
         $api->Create('module')
             ->Attributes([
                 'siteid' => $api->_website('siteid'),
@@ -264,7 +263,7 @@ class Fs_Demo
                 'headings' => [
                     [
                         'subject' => 'Your Email Address',
-                        'body' => 'You can dismiss this popover, or send us an email.',
+                        'body' => 'You can send us your email address if you\'d like, or you can test the callback.',
                     ],
                 ],
 
@@ -280,15 +279,17 @@ class Fs_Demo
                         'label' => 'Email Address',
                         'name' => 'email',
                         'class' => 'form-control',
+
                         // Email validation will check for patterns
                         'validation' => 'yes', // Enable validation
                     ],
                 ],
+
                 // Connect onsubmit to the name module
                 'onsubmit' => $api->_name('moduleid'),
+                'ondismiss' => 'callback:testCallback',
                 'buttonsubmit' => 'Send',
-                'buttondismiss' => '',
-
+                'buttondismiss' => 'Callback',
             ])
             ->As('email');
 
@@ -310,9 +311,9 @@ class Fs_Demo
                 'events' => [
                     ['type' => 'instant'],
                 ],
+
                 // Connect onsubmit to the name module
                 'onsubmit' => $api->_email('moduleid'),
-
                 'buttonsubmit' => 'Ok',
                 'buttondismiss' => 'No',
             ])
@@ -336,9 +337,9 @@ class Fs_Demo
                 'events' => [
                     ['type' => 'instant'],
                 ],
+
                 // Connect onsubmit to the name module
                 'onsubmit' => $api->_heyThanks('moduleid'),
-
                 'buttonsubmit' => 'Maybe',
                 'buttondismiss' => '',
             ])
@@ -365,6 +366,7 @@ class Fs_Demo
                         'label' => 'Email Address',
                         'name' => 'email',
                         'class' => 'form-control',
+
                         // Email validation will check for patterns
                         'validation' => 'yes', // Enable validation
                     ],
@@ -374,9 +376,9 @@ class Fs_Demo
                 'events' => [
                     ['type' => 'instant'],
                 ],
+
                 // Connect onsubmit to the name module
                 'ondismiss' => $api->_dontWantToShareMyEmail('moduleid'),
-
                 'buttonsubmit' => 'Submit',
                 'buttondismiss' => 'Dismiss',
             ])
@@ -402,7 +404,6 @@ class Fs_Demo
                 ],
                 // Connect onsubmit to the name module
                 'onsubmit' => $api->_whatsYourEmail('moduleid'),
-
                 'buttonsubmit' => 'Ok',
                 'buttondismiss' => '',
             ])
@@ -428,13 +429,12 @@ class Fs_Demo
                 ],
                 // Connect onsubmit to the name module
                 'onsubmit' => $api->_helloAgain('moduleid'),
-
                 'buttonsubmit' => 'Get Started',
                 'buttondismiss' => '',
             ])
             ->As('itWorks');
 
-        // 15) Create modules from pre-packaged modules.
+        // 14) Create modules from pre-packaged modules.
         $api->Create('modules')
             ->Attributes([
                 'siteid' => $api->_website('siteid'),
@@ -447,7 +447,7 @@ class Fs_Demo
             ])
             ->As('packages');
 
-        // 16) Create an individual module using API to enforce news letter subscription.
+        // 15) Create an individual module using API to enforce news letter subscription.
         $api->Create('module')
             ->Attributes([
                 'siteid' => $api->_website('siteid'),
@@ -460,15 +460,18 @@ class Fs_Demo
                         'body' => 'Did you know that we are sending out coupon codes that will save you tons of money! This offer is only available to news letter subscribers! We hope that you change your mind.',
                     ],
                 ],
+
                 // Set event to respond instantly
                 'events' => [
                     ['type' => 'instant'],
                 ],
                 'buttonsubmit' => 'Ok Subscribe me',
+
                 // Connect onsubmit to the address module
                 'onsubmit' => $api->_packages('news-letter-subscription')['moduleid'],
 
                 'buttondismiss' => 'No thank',
+
                 // Set dismiss response
                 'dismiss' => 'Thanks for the visit',
             ])
@@ -484,7 +487,7 @@ class Fs_Demo
          * This can be achieved by creating connections in between  modules.
          */
 
-        // 17) Update the contact form module created from packages
+        // 16) Update the contact form module created from packages
         $api->Get('module')
             ->Where([
                 'moduleid' => $api->_packages('contact-form')['moduleid'],
@@ -508,10 +511,11 @@ class Fs_Demo
                 // If submitted, display success message.
                 'success' => 'Thank you for contacting us',
             ])
-        // Now we can access the contact form directly.
+
+            // Now we can access the contact form directly.
             ->As('contactForm');
 
-        // 18) Update the request call back form module created from packages.
+        // 17) Update the request call back form module created from packages.
         $api->Get('module')
             ->Where([
                 'moduleid' => $api->_packages('request-call-back')['moduleid'],
@@ -535,10 +539,11 @@ class Fs_Demo
                 // If dismissed, display dismiss message
                 'success' => 'Ok! Thank you for visiting',
             ])
-        // Now we can access the request callback form directly.
+
+            // Now we can access the request callback form directly.
             ->As('requestCallback');
 
-        // 19) Update the news letter subscription form module created from packages
+        // 18) Update the news letter subscription form module created from packages
         $api->Get('module')
             ->Where([
                 'moduleid' => $api->_packages('news-letter-subscription')['moduleid'],
@@ -563,19 +568,22 @@ class Fs_Demo
                 // If dismissed, connect to Enforce news letter subscription
                 'ondismiss' => $api->_enforceNewsLetterSubscription('moduleid'),
             ])
-        // Now we can access the contact form directly.
+
+            // Now we can access the contact form directly.
             ->As('newsLetterSubscription');
 
-        // 20) Create an objective: Contact request with email.
+        // 19) Create an objective: Contact request with email.
         $api->Create('objective')
             ->Attributes([
                 'siteid' => $api->_website('siteid'),
                 'modid' => $api->_strategy('modid'),
                 'label' => 'Contact request with email',
+
                 // This objective will trigger a notification if the email value exists and validated.
                 'properties' => [
                     'email' => [
                         'value' => 'yes',
+
                         // validated, isvalid and confirmed will produce the same results.
                         'isvalid' => 'yes',
                     ],
@@ -589,13 +597,14 @@ class Fs_Demo
             ])
             ->As('objective1');
 
-        // 21) Create an objective: Contact request: Email, name and phone number.
+        // 20) Create an objective: Contact request: Email, name and phone number.
         // Note: This objective is not limited to a certain module. When an incoming request is intercepted, if all properties have values, a notification will be triggered.
         $api->Create('objective')
             ->Attributes([
                 'siteid' => $api->_website('siteid'),
                 'modid' => $api->_strategy('modid'),
                 'label' => 'Contact request: Email, name and phone number',
+
                 // This objective will trigger a notification if email, fname, lname and phone number exists.
                 'properties' => [
                     'email' => [
@@ -620,12 +629,13 @@ class Fs_Demo
             ])
             ->As('objective2');
 
-        // 22) Create an objective: Request call back.
+        // 21) Create an objective: Request call back.
         $api->Create('objective')
             ->Attributes([
                 'siteid' => $api->_website('siteid'),
                 'modid' => $api->_strategy('modid'),
                 'label' => 'Request call back',
+
                 // This objective will trigger a notification only if the mobile value exists and submitted by the request-call-back module.
                 'properties' => [
                     'mobile' => [
@@ -642,12 +652,13 @@ class Fs_Demo
             ])
             ->As('objective3');
 
-        // 23) Create an objective: News letter subscription.
+        // 22) Create an objective: News letter subscription.
         $api->Create('objective')
             ->Attributes([
                 'siteid' => $api->_website('siteid'),
                 'modid' => $api->_strategy('modid'),
                 'label' => 'News letter subscription',
+                
                 // This objective will trigger a notification only if an email value exists and submitted by the news-letter-subscription module.
                 'properties' => [
                     'email' => [
@@ -665,7 +676,7 @@ class Fs_Demo
             ])
             ->As('objective4');
 
-        // 24) Update resource.
+        // 23) Update resource.
         $resources->Store('all')->Data($api->_all());
     }
 }
