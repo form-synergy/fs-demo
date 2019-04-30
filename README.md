@@ -51,6 +51,9 @@ require_once 'vendor/autoload.php';
         'lname' =>      '',
         'email' =>      ''
     ],
-    'storage' =>        '' // A directory dedicated to store files Eg: __DIR__
+    'storage' =>       [
+                            __DIR__, 
+                            'form-synergy-demo'
+                        ] 
 ]);
 ```
