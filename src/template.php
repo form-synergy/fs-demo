@@ -22,7 +22,7 @@ namespace FormSynergy;
  * @copyright   2019 FormSynergy.com
  * @licence     https://github.com/form-synergy/template-essentials/blob/dev-master/LICENSE MIT
  * @package     fs-demo
- * @version     1.4.1.0
+ * @version     1.5.0
  */
 
 require_once 'vendor/autoload.php';
@@ -329,7 +329,9 @@ class Fs_Demo
                 'headings' => [
                     [
                         'subject' => 'Don\'t what to share your email!',
-                        'body' => 'We can understand, what is your were asked nicely? Click on the <span class="strong">Maybe button</span>',
+                        'body' => '<p>We can understand!</p>
+                        <p class="strong">What if your were asked nicely?</p>
+                        <p class="font-weight-bold text-secondary">Click on the <span class="font-weight-bold text-primary">Maybe button</span></p>',
                     ],
                 ],
 

@@ -33,6 +33,10 @@
             body {
                 background: linear-gradient(rgba(62, 23, 155, 0.64) 0%, rgba(21, 111, 191, 0.62) 50%), linear-gradient(to right, rgba(15, 109, 191, 0.65) 20%, rgba(130, 36, 227, 0.25) 50%);
                 background-position: left top;
+                background-size: cover;
+                overflow-y: hidden;
+                height: 100vh;
+                max-height: 100vh;
             }
 
             .bg-white-transparent {
@@ -46,6 +50,7 @@
                 left: 0;
                 right: 0;
                 top: 0;
+                z-index: 200;
                 height: 5rem;
             }
 
@@ -72,23 +77,35 @@
 
             body:not(.panel-active) #cards {
                 margin-top: 10rem;
+                position: relative;
+                z-index: 100;
                 opacity: 1;
-                transition: opacity 5.7s, overflow 0.2s, height 0.2s cubic-bezier(.77, .59, .25, .6);
+                transition: opacity 1.7s, overflow 0.2s, height 0.2s cubic-bezier(.77, .59, .25, .6);
             }
 
             body:not(.panel-active) #svg {
-                margin-top: -5rem;
+                top: 15rem;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
                 transition: all 0.2s cubic-bezier(.77, .59, .25, .6);
             }
 
             body.panel-active #cards {
                 margin-top: 10rem;
+                position: inherit;
+                z-index: 100;
                 opacity: 0;
                 transition: opacity 0.5s, overflow 0.2s, height 0.2s cubic-bezier(.77, .59, .25, .6);
             }
 
             body.panel-active #svg {
-                margin-top: -30rem;
+                top: 0rem;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
                 transition: all 0.2s cubic-bezier(.77, .59, .25, .6);
             }
 
@@ -224,17 +241,6 @@
             </div>
         </header>
 
-        <!-- 
-            Welcome module
-            DISPLAY: We can prepare the display and placement of an interaction via data tags.
-            TRIGGER: This module is triggered via javaScript using the js set method.
-        -->
-        <div 
-            data-fs-el="@module-faf7ec37f369f0d457ae2ab09f8cbbd9"
-            data-fs-opt='{
-                "position": "fixed",
-                "placement": "centered"
-        }'></div>
 
         <!-- This file can be replaced. It simply demonstrate the implementation of data tags and the javaScript client -->
         <?php
@@ -332,6 +338,12 @@
                 </div>
                 <!-- ./ News letter subscription -->
             </div>
+            <div class="mt-5 p-4">
+                <div class="text-center">
+                       <span class="text-white-50 h2">Please visit our website for a full list of features.</span> <a class="btn btn-outline-light btn-lg ml-5" href="https://formsynergy.com/features/">FormSynergy.com</a>
+                    </div>
+                   
+            </div>
         </div>
         <div id="svg">
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -367,8 +379,7 @@
                         <circle 
                             data-fs-el="@<?php echo $resources->Find('contactForm', 'moduleid')->In('all'); ?>"
                             data-fs-opt='{
-                                    "display": "popover",
-                                    "placement": "right-end"
+                                    "placement": "right-start"
                             }' 
                             fill="#4D296D" 
                             cx="361.6" 
@@ -391,8 +402,8 @@
                         <circle 
                             data-fs-el="@<?php echo $resources->Find('itWorks', 'moduleid')->In('all'); ?>" 
                             data-fs-opt='{
-                                    "size": "sm",
-                                    "placement": "left-end"
+                                    "placement": "left-end",
+                                    "size": "lg"
                             }' 
                             fill="#4D296D" 
                             cx="248.8" 
@@ -412,8 +423,8 @@
                         <circle 
                             data-fs-el="@<?php echo $resources->Find('helloAgain', 'moduleid')->In('all'); ?>"
                             data-fs-opt='{
-                                    "display": "popover",
-                                    "placement": "right"
+                                    "placement": "bottom-start",
+                                    "size": "lg"
                             }' 
                             fill="#4D296D" 
                             cx="203.8" 
@@ -432,7 +443,6 @@
                         <circle 
                             data-fs-el="@<?php echo $resources->Find('whatsYourEmail', 'moduleid')->In('all'); ?>"
                             data-fs-opt='{
-                                    "display": "popover",
                                     "placement": "top"
                             }' 
                             fill="#4D296D" 
@@ -453,8 +463,8 @@
                         <circle
                             data-fs-el="@<?php echo $resources->Find('dontWantToShareMyEmail', 'moduleid')->In('all'); ?>"
                             data-fs-opt='{
-                                    "display": "popover",
-                                    "placement": "top"
+                                    "placement": "top",
+                                    "size": "lg"
                             }' 
                             fill="#4D296D" 
                             cx="373.4" 
@@ -475,7 +485,6 @@
                         <circle 
                             data-fs-el="@<?php echo $resources->Find('heyThanks', 'moduleid')->In('all'); ?>"
                             data-fs-opt='{
-                                    "display": "popover",
                                     "placement": "left-end"
                             }' 
                             fill="#4D296D" 
@@ -498,7 +507,6 @@
                         <circle 
                             data-fs-el="@<?php echo $resources->Find('email', 'moduleid')->In('all'); ?>" 
                             data-fs-opt='{
-                                    "display": "popover",
                                     "placement": "top"
                             }' 
                             fill="#4D296D" 
@@ -518,7 +526,6 @@
                         <circle
                             data-fs-el="@<?php echo $resources->Find('newsLetterSubscription', 'moduleid')->In('all'); ?>"
                             data-fs-opt='{
-                                    "display": "popover",
                                     "placement": "right"
                             }' 
                             fill="#4D296D" 
@@ -530,7 +537,6 @@
                             data-fs-el="@<?php echo $resources->Find('enforceNewsLetterSubscription', 'moduleid')->In('all'); ?>"
                             data-fs-opt='{
                                     "size": "lg",
-                                    "display": "popover",
                                     "placement": "right"
                             }' 
                             fill="#FFFFFF"
@@ -548,7 +554,6 @@
                         <circle 
                             data-fs-el="@<?php echo $resources->Find('requestCallback', 'moduleid')->In('all'); ?>"
                             data-fs-opt='{
-                                    "display": "popover",
                                     "placement": "left"
                             }' 
                             fill="#4D296D" 
@@ -574,20 +579,23 @@
                 "placement": "centered"
         }'></div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        <!-- 
+            Include jQuery.
+            Note: version fs-2.1 does not depend on jQuery, 
+            however jQuery is used in this demo.
+        -->
+        <script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js">
+        </script>
 
+        <!--
+            Please visit our JavaScript client page for other versions.
+            https://formsynergy.com/javascript-client/
+        -->
         <script 
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
-            crossorigin="anonymous"></script>
-
-        <script 
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
-            crossorigin="anonymous"></script>
-       
-        <script 
-            src="https://formsynergy.com/fs-js/fs-client-2.0.3.js" 
-            id="formsynergy-2.0.3"></script>
+            src="https://formsynergy.com/fs-js/r/fs-2.1.js" 
+            id="fs-2.1">	
+        </script>
 
         <script>
         (function ($, root, undefined) {
@@ -610,11 +618,11 @@
 
                 $(document).on('click', '[href="#cards"]', function (e) {
                     $('body').removeClass('panel-active');
-                    $('.popover').popover('dispose');
                     $('#svg svg .active').removeClass('active');
                     $('html, body').animate({
                         scrollTop: 0
                     },100);
+                    e.preventDefault();
                 });
 
                 function remove_active(el) {
@@ -628,55 +636,6 @@
                         }, el.delay);
                     }
                 }
-
-
-                /**
-                 * Instantiate the Form Synergy class
-                 */
-                const FS = new FormSynergy();
-
-                /**
-                 * Heartbeat is disable by default,
-                 * Simply provide a time laps inbetween requests
-                 */
-                FS.heartBeat(10000)
-
-                /**
-                 *  When engaged, any event triggered on data-fs-etag, 
-                 *  will trigger an interaction.
-                 */
-                FS.engage();
-                
-                /**
-                 * In order to programmatically create an interaction,
-                 * simply use the bind method.
-                 *
-                 * NOTE: el and opt, can only be set using the bind method,
-                 * if using fixed display. 
-                 * 
-                 */
-                FS.bind(
-                    '#fs-logo', // Add event listener on element
-                    'click:welcome-demo', { // Set e:tag as event:tagName
-                    trigger: {
-                        moduleid: "module-faf7ec37f369f0d457ae2ab09f8cbbd9" // Module id
-                    },
-                    el: "#fs-logo", // Set position @ element
-                    opt: {
-                        display: "fixed",
-                        size: "lg",
-                        placement: "centered", // Placement.
-                        theme: 'white'
-                    } 
-                }); // Delay display in milliseconds.
-
-                FS.setLocalMode({
-                    request: {
-                        // Include additional variables to  a request
-                        nonce: 'swef234dsrfsdsdfsdf'
-                    },
-                    endPoint: 'https://demo.formsynergy.com/packages/fs-demo/test/',
-                });
 
                 function svgIcons(e) {
                     // Remove className active.
@@ -697,6 +656,89 @@
                         }
                 }
 
+
+
+                /**
+                 * Instantiate the Form Synergy class
+                 */
+                const FS = new FormSynergy();
+
+                /**
+                 * Heartbeat is disable by default,
+                 * Simply provide a time laps inbetween requests
+                 */
+                //FS.heartBeat(10000)
+
+                /**
+                 *  When engaged, any event triggered on data-fs-etag, 
+                 *  will trigger an interaction.
+                 */
+                FS.engage();
+                
+                /**
+                 * In order to programmatically create an interaction,
+                 * simply use the bind method.
+                 *
+                 * NOTE: el and opt, can only be set using the bind method,
+                 * if using fixed display. 
+                 * 
+                 */
+                FS.bind(
+                    '#fs-logo', // Add event listener on element
+                    'click:welcome-demo', { // Set e:tag as event:tagName
+                    trigger: {
+                        moduleid: "<?php echo $resources->Find('contactForm', 'moduleid')->In('all'); ?>" // Module id
+                    },
+                    el: "#fs-logo", // Set position @ element
+                    opt: {
+                        display: "fixed",
+                        size: "lg",
+                        placement: "centered", // Placement.
+                        theme: 'white'
+                    } 
+                }); // Delay display in milliseconds.
+
+                /**
+                * Localizing modules.
+                * If connection difficulties with the Form Synergy service are encountered, 
+                * interaction data can still be retrieved by localizing the modules.
+                *
+                * Simply replace the endpoint with your own, where you can capture
+                * and store any data generated by interactions.
+                */
+                FS.setLocalMode({
+                    request: {
+                        // Include additional variables to a request
+                        nonce: 'swef234dsrfsdsdfsdf'
+                    },
+                    endPoint: 'https://demo.formsynergy.com/packages/fs-demo/test/',
+                });
+
+                /**
+                * POSITIONS:
+                *
+                * Positioning interactions will shift based on the positions, display and position area!
+                * In order to shift the position of an interaction, 
+                * they are two options:
+                * - 1 Set offset position for each interaction 
+                *   Add offset within the position opt "data-fs-opt"
+                *   data-fs-opt='{
+                *        "placement": "right",
+                *        "up": "",
+                *        "down": "",
+                *        "left": "",
+                *        "right": ""
+                *  }' 
+                * - 2 Set offset position for all interactions 
+                */
+                FS.offsetPositions({
+                    up: '',
+                    down: '',
+                    left: '',
+                    right: ''
+                });
+
+ 
                 /**
                  * Hooks can provide additional control.
                  * Available Hooks
@@ -724,13 +766,13 @@
                     }
                 */
                 FS.on('interaction:ondismiss', (e, eType) => {
-                    svgIcons(e);
+                    svgIcons(e.event);
                    
                 }).on('interaction:onsubmit', (e, eType) => {
-                    svgIcons(e);
+                    svgIcons(e.event);
 
                 }).on('interaction:click', (e, eType)=> {
-                    svgIcons(e);
+                    svgIcons(e.event);
                 });
                 
                 /**
