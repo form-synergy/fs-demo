@@ -26,11 +26,26 @@ function heyThanks_create($api, $resource, $data, $siteid, $modid)
             'events' => [
                 ['type' => 'instant'],
             ],
-
-            // Connect onsubmit to the name module
-            'onsubmit' => $api->_yourEmailAddress('moduleid'),
             'buttonsubmit' => 'Ok',
             'buttondismiss' => 'No',
+        ])
+        ->As('heyThanks');
+
+    $resource
+        ->Store('heyThanks')
+        ->Data(
+            $api->_heyThanks()
+        );
+}
+
+function heyThanks_update($api, $resource, $data, $siteid, $modid)
+{
+    $api->Create('module')
+        ->Where([
+            'moduleid' => $api->_heyThanks(),
+             
+            // Connect onsubmit to the name module
+            'onsubmit' => $api->_yourEmailAddress('moduleid'),
         ])
         ->As('heyThanks');
 
