@@ -122,27 +122,6 @@ class Fs_Demo
         $modid = $api->_strategy('modid');
 
 
-        $files = [
-            "src/autoload.php", 
-            "src/strategy.php",
-            "modules/contact-form.php",
-            "modules/email-font-share.php",
-            "modules/enforce-news-letter-subscription.php",
-            "modules/hello-again.php",
-            "modules/hey-thanks.php",
-            "modules/it-works.php",
-            "modules/mailing-address.php",
-            "modules/news-letter-subscription.php",
-            "modules/request-callback.php",
-            "modules/whats-your-email.php",
-            "modules/your-email-address.php",
-            "objectives/callback-requests.php",
-            "objectives/email-requests.php",
-            "objectives/news-letter-subscription.php"
-        ];
-        foreach($files as $file ) {
-            require_once $file;
-        }
         /**
          * 5) Creating modules.
          *
