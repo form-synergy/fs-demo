@@ -34,7 +34,7 @@ function enforceNewsLetterSubscription_create($api, $resource, $data, $siteid, $
 
         ])->As('enforceNewsLetterSubscription');
 
-    $resources
+    $resource
         ->Store('enforceNewsLetterSubscription')
         ->Data(
             $api->_enforceNewsLetterSubscription()

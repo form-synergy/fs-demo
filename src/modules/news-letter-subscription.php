@@ -10,10 +10,14 @@ function newsLetterSubscription_create( $api, $resource, $data, $siteid, $modid 
             'siteid' => $siteid,
             'modid' => $modid,
             'name' => 'News Letter Subscription',
+            'description' => 'This module will request an email address for news letter purposes.',
             'headings' => [
                 [
                     'subject' => 'News Letter Subscription'
                 ]
+            ],
+            'events' => [
+                ['type' => 'instant'],
             ],
             'form' => [[
                 'x' => 1,
@@ -27,7 +31,7 @@ function newsLetterSubscription_create( $api, $resource, $data, $siteid, $modid 
             'success' => 'Thank you subscribing.',
         ])->As('newsLetterSubscription');
 
-    $resources
+    $resource
         ->Store('newsLetterSubscription')
         ->Data(
             $api->_newsLetterSubscription()
@@ -46,7 +50,7 @@ function newsLetterSubscription_update( $api, $resource, $data, $siteid, $modid 
             ])
             ->As('newsLetterSubscription');
 
-    $resources
+    $resource
         ->Update('newsLetterSubscription')
         ->Data(
             $api->_newsLetterSubscription()

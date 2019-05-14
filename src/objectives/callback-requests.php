@@ -15,7 +15,7 @@ function obs_callbackRequests_create( $api, $resource, $data, $siteid, $modid, $
             'recipient' => $data['contact'],
         ])->As('obsCallbackRequests');
 
-    $resources
+    $resource
         ->Update('obsCallbackRequests')
         ->Data($api->_obsCallbackRequests()
     );

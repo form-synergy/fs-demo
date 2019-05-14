@@ -32,8 +32,25 @@ function dontWantToShareMyEmail_create($api, $resource, $data, $siteid, $modid)
             ])
             ->As('dontWantToShareMyEmail');
 
-    $resources
+    $resource
         ->Store('dontWantToShareMyEmail')
+        ->Data(
+            $api->_dontWantToShareMyEmail()
+        );
+}
+
+function dontWantToShareMyEmail_update($api, $resource, $data, $siteid, $modid)
+{
+    $api->Get('module')
+        ->Where([
+            'moduleid' => $api->_dontWantToShareMyEmail('moduleid'),
+        ])
+        ->Update([
+            'onsubmit' => $api->_heyThanks('moduleid')
+        ])->As('dontWantToShareMyEmail');
+
+    $resource
+        ->Update('dontWantToShareMyEmail')
         ->Data(
             $api->_dontWantToShareMyEmail()
         );

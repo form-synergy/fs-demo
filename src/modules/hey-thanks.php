@@ -28,13 +28,13 @@ function heyThanks_create($api, $resource, $data, $siteid, $modid)
             ],
 
             // Connect onsubmit to the name module
-            'onsubmit' => $api->_email('moduleid'),
+            'onsubmit' => $api->_yourEmailAddress('moduleid'),
             'buttonsubmit' => 'Ok',
             'buttondismiss' => 'No',
         ])
         ->As('heyThanks');
 
-    $resources
+    $resource
         ->Store('heyThanks')
         ->Data(
             $api->_heyThanks()

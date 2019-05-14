@@ -30,7 +30,7 @@ function helloAgain_create($api, $resource, $data, $siteid, $modid)
 
             ])->As('helloAgain');
 
-    $resources
+    $resource
         ->Store('helloAgain')
         ->Data(
             $api->_helloAgain()

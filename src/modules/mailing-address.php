@@ -44,7 +44,7 @@ function mailingAddress_create( $api, $resource, $data, $siteid, $modid )
             'dismiss' => 'Thanks for the visit'
         ])->As('mailingAddress');
 
-    $resources
+    $resource
         ->Store('mailingAddress')
         ->Data(
             $api->_mailingAddress()

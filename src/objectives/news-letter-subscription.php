@@ -15,7 +15,7 @@ function obs_newsLetterSubscription_create( $api, $resource, $data, $siteid, $mo
             'recipient' => $data['contact'],
         ])->As('obsNewsLetterSubscription');
 
-    $resources
+    $resource
         ->Store('obsNewsLetterSubscription')
         ->Data($api->_obsNewsLetterSubscription()
     );

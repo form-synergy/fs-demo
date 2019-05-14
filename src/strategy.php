@@ -66,8 +66,8 @@ class Fs_Demo
          */
 
         // 1) Register the website with FormSynergy first
-        $resources = FS::Resource('fs-demo');
-        $website = $resources->Get('website');
+        $resource = FS::Resource('fs-demo');
+        $website = $resource->Get('website');
         if (!$website) {
             $api->Create('website')
                 ->Attributes([
@@ -78,10 +78,10 @@ class Fs_Demo
                 ])
                 ->As('website');
             // Store website resource
-            $website = $resources->Store('website')->Data($api->_website());
+            $resource->Store('website')->Data($api->_website());
         }
-        
-
+        $website = $resource->Get('website');
+    
         // 2) If we have a site id include meta tag.
         /**
          * If the site id is missing exit.
@@ -90,33 +90,35 @@ class Fs_Demo
             exit('Something went wrong! Unable to load site id!');
         }
 
-        /**
-         * Display the FormSynergy meta.
-         */
-        echo '<meta name="fs:siteid" content="' . $website['siteid'] . '">';
-
+       
         // 3) If the site has yet been verified, verify the site.
-        if ($website && !isset($website['verified'])) {
+        if ($website && !isset($website['verified']) || !$website['verified']) {
             $api->Get('website')
                 ->Where([
                     'siteid' => $website['siteid'],
                 ])
                 ->Verify()
                 ->As('verify');
+
             // Update website resource
-            $website = $resources->Update('website')->Data($api->_verify());
+            $resource->Store('website')->Data($api->_verify());
         }
+
+         /**
+         * Display the FormSynergy meta.
+         */
+        echo '<meta name="fs:siteid" content="' . $website['siteid'] . '">';
+
 
         // 4) Creating the initial strategy.
         $api->Create('strategy')
             ->Attributes([
                 'siteid' => $website['siteid'],
-                'name' => isset($data['packageName']) ? $data['packageName'] : 'Form Synergy Demo',
+                'name' => isset($data['strategy']) ? $data['strategy'] : 'Form Synergy Demo',
             ])
             ->As('strategy');
 
-        // Site id
-        $siteid = $website['siteid'];
+ 
 
         // Strategy id.
         $modid = $api->_strategy('modid');
@@ -140,16 +142,18 @@ class Fs_Demo
          *  - 10 newsLetterSubscription_update
          *  - 11 requestCallback_create
          */
-        \modules\yourEmailAddress_create($api, $resource, $data, $siteid, $modid);
-        \modules\heyThanks_create($api, $resource, $data, $siteid, $modid);
-        \modules\dontWantToShareMyEmail_create($api, $resource, $data, $siteid, $modid);
-        \modules\helloAgain_create($api, $resource, $data, $siteid, $modid);
-        \modules\itWorks_create($api, $resource, $data, $siteid, $modid);
-        \modules\contactForm_create($api, $resource, $data, $siteid, $modid);
-        \modules\newsLetterSubscription_create($api, $resource, $data, $siteid, $modid);
-        \modules\enforceNewsLetterSubscription_create($api, $resource, $data, $siteid, $modid);
-        \modules\newsLetterSubscription_update($api, $resource, $data, $siteid, $modid);
-        \modules\requestCallback_create($api, $resource, $data, $siteid, $modid);
+        modules\yourEmailAddress_create($api, $resource, $data, $website['siteid'], $modid);
+        modules\heyThanks_create($api, $resource, $data, $website['siteid'], $modid);
+        modules\dontWantToShareMyEmail_create($api, $resource, $data, $website['siteid'], $modid);
+        modules\whatsYourEmail_create($api, $resource, $data, $website['siteid'], $modid);
+        modules\helloAgain_create($api, $resource, $data, $website['siteid'], $modid);
+        modules\itWorks_create($api, $resource, $data, $website['siteid'], $modid);
+        modules\contactForm_create($api, $resource, $data, $website['siteid'], $modid);
+
+        modules\newsLetterSubscription_create($api, $resource, $data, $website['siteid'], $modid);
+        modules\enforceNewsLetterSubscription_create($api, $resource, $data, $website['siteid'], $modid);
+        modules\newsLetterSubscription_update($api, $resource, $data, $website['siteid'], $modid);
+        modules\requestCallback_create($api, $resource, $data, $website['siteid'], $modid);
 
         /**
          * 6) Creating objectives.
@@ -158,11 +162,11 @@ class Fs_Demo
          *  - 2 callbackRequests_create
          *  - 3 newsLetterSubscription_create
          */
-        \objectives\obs_contactRequests_create($api, $resource, $data, $siteid, $modid);
-        \objectives\obs_callbackRequests_create($api, $resource, $data, $siteid, $modid);
-        \objectives\obs_newsLetterSubscription_create($api, $resource, $data, $siteid, $modid);
+        objectives\obs_contactRequests_create($api, $resource, $data, $siteid, $modid, $api->_contactForm('moduleid'));
+        objectives\obs_callbackRequests_create($api, $resource, $data, $siteid, $modid, $api->_requestCallback('moduleid'));
+        objectives\obs_newsLetterSubscription_create($api, $resource, $data, $siteid, $modid, $api->_newsLetterSubscription('moduleid'));
         
         // 7) Update resource.
-        $resources->Store('all')->Data($api->_all());
+        $resource->Store('all')->Data($api->_all());
     }
 }

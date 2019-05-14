@@ -15,7 +15,7 @@ function obs_contactRequests_create( $api, $resource, $data, $siteid, $modid, $m
             'recipient' => $data['contact'],
         ])->As('obsContactRequests');
 
-    $resources
+    $resource
         ->Update('obsContactRequests')
         ->Data($api->_obsContactRequests()
     );

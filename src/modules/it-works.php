@@ -29,7 +29,7 @@ function itWorks_create($api, $resource, $data, $siteid, $modid)
 
         ])->As('itWorks');
 
-    $resources
+    $resource
         ->Store('itWorks')
         ->Data(
             $api->_itWorks()

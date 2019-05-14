@@ -10,6 +10,7 @@ function requestCallback_create( $api, $resource, $data, $siteid, $modid )
             'siteid' => $siteid,
             'modid' => $modid,
             'name' => 'Request Callback',
+            'description' => 'This module simply requests a phone number. The phone number will be validated by checking if it is in service, and that it can receive text messages.',
             'headings' => [
                 [
                     'subject' => 'Request a Callback'
@@ -28,7 +29,7 @@ function requestCallback_create( $api, $resource, $data, $siteid, $modid )
             'dismiss' => 'Thank you for visiting.'
         ])->As('requestCallback');
 
-    $resources
+    $resource
         ->Store('requestCallback')
         ->Data(
             $api->_requestCallback()

@@ -44,7 +44,7 @@ function whatsYourEmail_create($api, $resource, $data, $siteid, $modid)
         ])
         ->As('whatsYourEmail');
 
-    $resources
+    $resource
         ->Store('whatsYourEmail')
         ->Data(
             $api->_whatsYourEmail()

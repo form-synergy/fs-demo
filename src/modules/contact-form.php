@@ -10,6 +10,13 @@ function contactForm_create( $api, $resource, $data, $siteid, $modid )
             'siteid' => $siteid,
             'modid' => $modid,
             'name' => 'Contact Form',
+            'description'   => '<p>This contact form is a simple example that will demonstrate how a strategy can intervene.</p>
+                                <p>Note: Once the contact is displayed,
+                                    <br>
+                                    <span class="font-weight-bold text-primary">
+                                    click on the <span class="text-secondary">Dismiss button</span>
+                                    </span>
+                                </p>',
             'headings' => [
                 [
                     'subject' => 'Contact Us'
@@ -65,6 +72,9 @@ function contactForm_create( $api, $resource, $data, $siteid, $modid )
                 'validation' => 'yes',
                 'validationType' => 'paragraph'
             ]],
+            'events' => [
+                ['type' => 'instant'],
+            ],
             'ondismiss' => $api->_itWorks('moduleid'),
             // Set responses
             'success' => 'Thank you for contacting us',

@@ -280,7 +280,8 @@
                              * This will return the data if it exists:
                              * $resources->Find('packages', 'contact-form')->In('all')['moduleid'];
                              */
-                            echo $resources->Find('contactForm', 'description')->In('all');
+                            echo $resources->Find('description')->In('contactForm');
+
                             ?>
                     </div>
                     <div class="card-footer">
@@ -289,7 +290,7 @@
                             data-fs-etag="click:contact-form" 
                             data-fs-params='{
                                 "trigger": {
-                                    "moduleid": "<?php echo $resources->Find('contactForm', 'moduleid')->In('all'); ?>"
+                                    "moduleid": "<?php echo $resources->Find('moduleid')->In('contactForm'); ?>"
                                 }
                             }'> Try the Contact Form </button>
                     </div>
@@ -302,7 +303,7 @@
                         <span class="strong h4 text-secondary">Request a Call Back</span>
                     </div>
                     <div class="card-body">
-                        <?php echo $resources->Find('requestCallback', 'description')->In('all'); ?>
+                        <?php echo $resources->Find('description')->In('requestCallback'); ?>
                     </div>
                     <div class="card-footer">
                         <button 
@@ -310,7 +311,7 @@
                             data-fs-etag="click:request-call-back" 
                             data-fs-params='{
                                 "trigger": {
-                                    "moduleid": "<?php echo $resources->Find('requestCallback', 'moduleid')->In('all'); ?>"
+                                    "moduleid": "<?php echo $resources->Find('moduleid')->In('requestCallback'); ?>"
                                 }
                         }'> Try requesting a call back </button>
                     </div>
@@ -323,7 +324,7 @@
                         <span class="strong h4 text-secondary">News Letter Subscription</span>
                     </div>
                     <div class="card-body">
-                        <?php echo $resources->Find('newsLetterSubscription', 'description')->In('all'); ?>
+                        <?php echo $resources->Find('description')->In('newsLetterSubscription'); ?>
                     </div>
                     <div class="card-footer">
                         <button 
@@ -331,7 +332,7 @@
                             data-fs-etag="click:news-letter-subscription"
                             data-fs-params='{
                             "trigger": {
-                                "moduleid": "<?php echo $resources->Find('newsLetterSubscription', 'moduleid')->In('all'); ?>"
+                                "moduleid": "<?php echo $resources->Find('moduleid')->In('newsLetterSubscription'); ?>"
                             }
                         }'> Try the news letter subscription </button>
                     </div>
@@ -377,7 +378,7 @@
                     <g id="contact-form">
 
                         <circle 
-                            data-fs-el="@<?php echo $resources->Find('contactForm', 'moduleid')->In('all'); ?>"
+                            data-fs-el="@<?php echo $resources->Find('moduleid')->In('contactForm'); ?>"
                             data-fs-opt='{
                                     "placement": "right-start"
                             }' 
@@ -400,7 +401,7 @@
                     <g id="itworks">
                     
                         <circle 
-                            data-fs-el="@<?php echo $resources->Find('itWorks', 'moduleid')->In('all'); ?>" 
+                            data-fs-el="@<?php echo $resources->Find('moduleid')->In('itWorks'); ?>" 
                             data-fs-opt='{
                                     "placement": "left-end",
                                     "size": "lg"
@@ -421,7 +422,7 @@
                     <g id="hello-again">
 
                         <circle 
-                            data-fs-el="@<?php echo $resources->Find('helloAgain', 'moduleid')->In('all'); ?>"
+                            data-fs-el="@<?php echo $resources->Find('moduleid')->In('helloAgain'); ?>"
                             data-fs-opt='{
                                     "placement": "bottom-start",
                                     "size": "lg"
@@ -441,7 +442,7 @@
                     <g id="whats-your-email">
 
                         <circle 
-                            data-fs-el="@<?php echo $resources->Find('whatsYourEmail', 'moduleid')->In('all'); ?>"
+                            data-fs-el="@<?php echo $resources->Find('moduleid')->In('whatsYourEmail'); ?>"
                             data-fs-opt='{
                                     "placement": "top"
                             }' 
@@ -461,7 +462,7 @@
                     <g id="dont-share-email">
 
                         <circle
-                            data-fs-el="@<?php echo $resources->Find('dontWantToShareMyEmail', 'moduleid')->In('all'); ?>"
+                            data-fs-el="@<?php echo $resources->Find('moduleid')->In('dontWantToShareMyEmail'); ?>"
                             data-fs-opt='{
                                     "placement": "top",
                                     "size": "lg"
@@ -483,7 +484,7 @@
                     </g>
                     <g id="hey-thanks">
                         <circle 
-                            data-fs-el="@<?php echo $resources->Find('heyThanks', 'moduleid')->In('all'); ?>"
+                            data-fs-el="@<?php echo $resources->Find('moduleid')->In('heyThanks'); ?>"
                             data-fs-opt='{
                                     "placement": "left-end"
                             }' 
@@ -505,7 +506,7 @@
                     <g id="your-email-address" opacity="0.7">
 
                         <circle 
-                            data-fs-el="@<?php echo $resources->Find('email', 'moduleid')->In('all'); ?>" 
+                            data-fs-el="@<?php echo $resources->Find('moduleid')->In('whatsYourEmail'); ?>" 
                             data-fs-opt='{
                                     "placement": "top"
                             }' 
@@ -524,7 +525,7 @@
                     <g id="news-letter">
 
                         <circle
-                            data-fs-el="@<?php echo $resources->Find('newsLetterSubscription', 'moduleid')->In('all'); ?>"
+                            data-fs-el="@<?php echo $resources->Find('moduleid')->In('newsLetterSubscription'); ?>"
                             data-fs-opt='{
                                     "placement": "right"
                             }' 
@@ -534,7 +535,7 @@
                             r="27.5" />
 
                         <path
-                            data-fs-el="@<?php echo $resources->Find('enforceNewsLetterSubscription', 'moduleid')->In('all'); ?>"
+                            data-fs-el="@<?php echo $resources->Find('moduleid')->In('enforceNewsLetterSubscription'); ?>"
                             data-fs-opt='{
                                     "size": "lg",
                                     "placement": "right"
@@ -552,7 +553,7 @@
                     <g id="request-call-back">
 
                         <circle 
-                            data-fs-el="@<?php echo $resources->Find('requestCallback', 'moduleid')->In('all'); ?>"
+                            data-fs-el="@<?php echo $resources->Find('moduleid')->In('requestCallback'); ?>"
                             data-fs-opt='{
                                     "placement": "left"
                             }' 
@@ -573,9 +574,9 @@
 
         <!-- Display address interaction if enabled -->
         <div 
-            data-fs-el="@<?php echo $resources->Find('address', 'moduleid')->In('all'); ?>" 
+            data-fs-el="@<?php echo $resources->Find('moduleid')->In('mailingAddress'); ?>" 
             data-fs-opt='{
-                "display": "modal",
+                "display": fixed",
                 "placement": "centered"
         }'></div>
 
@@ -687,7 +688,7 @@
                     '#fs-logo', // Add event listener on element
                     'click:welcome-demo', { // Set e:tag as event:tagName
                     trigger: {
-                        moduleid: "<?php echo $resources->Find('contactForm', 'moduleid')->In('all'); ?>" // Module id
+                        moduleid: "<?php echo $resources->Find('moduleid')->In('contactForm'); ?>" // Module id
                     },
                     el: "#fs-logo", // Set position @ element
                     opt: {

@@ -37,14 +37,13 @@ function yourEmailAddress_create($api, $resource, $data, $siteid, $modid)
             ],
 
             // Connect onsubmit to the name module
-            'onsubmit' => $api->_name('moduleid'),
             'ondismiss' => 'callback:testCallback',
             'buttonsubmit' => 'Send',
             'buttondismiss' => 'Callback',
         ])
         ->As('yourEmailAddress');
 
-    $resources
+    $resource
         ->Store('yourEmailAddress')
         ->Data(
             $api->_yourEmailAddress()
