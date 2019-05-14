@@ -43,7 +43,7 @@
             "src/modules/whats-your-email.php",
             "src/modules/your-email-address.php",
             "src/objectives/callback-requests.php",
-            "src/objectives/email-requests.php",
+            "src/objectives/contact-requests.php",
             "src/objectives/news-letter-subscription.php"
         ]
     }
