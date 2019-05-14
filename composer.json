@@ -32,7 +32,7 @@
             "src/autoload.php", 
             "src/strategy.php",
             "src/modules/contact-form.php",
-            "src/modules/email-font-share.php",
+            "src/modules/email-dont-share.php",
             "src/modules/enforce-news-letter-subscription.php",
             "src/modules/hello-again.php",
             "src/modules/hey-thanks.php",
