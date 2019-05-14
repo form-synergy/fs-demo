@@ -25,7 +25,6 @@ You will need to retrieve your credentials in the Form Synergy console: https://
 ## To Load Package
 
 ``` PHP
-require_once 'vendor/autoload.php';
 
 /**
  * Form Synergy Demo.
@@ -33,23 +32,23 @@ require_once 'vendor/autoload.php';
  * This package will load and initiate the demo package.
  */
 \FormSynergy\Fs_Demo([
-    'strategy'          '', // Eg: Form Synergy Demo
-    'profileid' =>      '', // You can find the profile id under the profile tab: https://formsynergy.com/console/
+    'strategy'      => '', // Eg: Form Synergy Demo
+    'profileid'     => '', // You can find the profile id under the profile tab: https://formsynergy.com/console/
     'website' => [
-        'proto' =>      '', // Eg: https, or http
-        'domain' =>     '', // Eg: demo.formsynergy.com
-        'name' =>       '', // Eg: Form Synergy demo
-        'indexpage' =>  '', // Eg: /packages/fs-demo
+        'proto'     => '', // Eg: https, or http
+        'domain'    => '', // Eg: demo.formsynergy.com
+        'name'      => '', // Eg: Form Synergy demo
+        'indexpage' => '', // Eg: /packages/fs-demo
     ],
     'config' => [
-        'apikey' =>     '', // API Key: Under the API access tab: https://formsynergy.com/console/
-        'secretkey' =>  '', // API Key: Under the API access tab: https://formsynergy.com/console/
+        'apikey'    => '', // API Key: Under the API access tab: https://formsynergy.com/console/
+        'secretkey' => '', // API Key: Under the API access tab: https://formsynergy.com/console/
 
     ],
     'contact' => [          // Alerts and notifications contact.
-        'fname' =>      '', 
-        'lname' =>      '',
-        'email' =>      ''
+        'fname'     => '', 
+        'lname'     => '',
+        'email'     => ''
     ],
     'storage' =>       [__DIR__, 'form-synergy-demo'] 
 ]);
