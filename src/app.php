@@ -506,7 +506,7 @@
                     <g id="your-email-address" opacity="0.7">
 
                         <circle 
-                            data-fs-el="@<?php echo $resources->Find('moduleid')->In('whatsYourEmail'); ?>" 
+                            data-fs-el="@<?php echo $resources->Find('moduleid')->In('yourEmailAddress'); ?>" 
                             data-fs-opt='{
                                     "placement": "top"
                             }' 

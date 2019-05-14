@@ -38,7 +38,14 @@ You will need to retrieve your credentials in the Form Synergy console: https://
     'contact' => [          // Alerts and notifications contact.
         'fname'     => '', 
         'lname'     => '',
-        'email'     => ''
+        'email'     => '',
+        /**
+         * Format:
+         *  - default for HTML & Text,
+         *  - text, 
+         *  - markdown
+         */
+        'format'    => ''  
     ],
     'storage' =>       [__DIR__, 'form-synergy-demo'] 
 ]);

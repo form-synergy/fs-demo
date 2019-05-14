@@ -109,7 +109,6 @@ class Fs_Demo
          */
         echo '<meta name="fs:siteid" content="' . $website['siteid'] . '">';
 
-
         // 4) Creating the initial strategy.
         $api->Create('strategy')
             ->Attributes([
@@ -149,7 +148,6 @@ class Fs_Demo
         modules\helloAgain_create($api, $resource, $data, $website['siteid'], $modid);
         modules\itWorks_create($api, $resource, $data, $website['siteid'], $modid);
         modules\contactForm_create($api, $resource, $data, $website['siteid'], $modid);
-
         modules\newsLetterSubscription_create($api, $resource, $data, $website['siteid'], $modid);
         modules\enforceNewsLetterSubscription_create($api, $resource, $data, $website['siteid'], $modid);
         modules\newsLetterSubscription_update($api, $resource, $data, $website['siteid'], $modid);
@@ -162,9 +160,9 @@ class Fs_Demo
          *  - 2 callbackRequests_create
          *  - 3 newsLetterSubscription_create
          */
-        objectives\obs_contactRequests_create($api, $resource, $data, $siteid, $modid, $api->_contactForm('moduleid'));
-        objectives\obs_callbackRequests_create($api, $resource, $data, $siteid, $modid, $api->_requestCallback('moduleid'));
-        objectives\obs_newsLetterSubscription_create($api, $resource, $data, $siteid, $modid, $api->_newsLetterSubscription('moduleid'));
+        objectives\obs_contactRequests_create($api, $resource, $data, $website['siteid'], $modid, $api->_contactForm('moduleid'));
+        objectives\obs_callbackRequests_create($api, $resource, $data, $website['siteid'], $modid, $api->_requestCallback('moduleid'));
+        objectives\obs_newsLetterSubscription_create($api, $resource, $data, $website['siteid'], $modid, $api->_newsLetterSubscription('moduleid'));
         
         // 7) Update resource.
         $resource->Store('all')->Data($api->_all());

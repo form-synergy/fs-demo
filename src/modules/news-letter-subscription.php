@@ -42,7 +42,7 @@ function newsLetterSubscription_update( $api, $resource, $data, $siteid, $modid 
 {
     $api->Get('module')
             ->Where([
-                'moduleid' => $api->_newsLetterSubscription('moduleid'),
+                'moduleid' => $resource->Find('moduleid')->In('newsLetterSubscription'),
             ])
             ->Update([
                 // If dismissed, connect to Enforce news letter subscription
