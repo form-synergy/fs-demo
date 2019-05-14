@@ -9,28 +9,18 @@ This package will automatically configure the following using the API
 * Demo page using HTML, CSS, javaScript, jQuery and SVG
 
 ## Install using composer
-
 ``` bash
 composer require form-synergy/fs-demo
 ```
 
 ## Include the library
-
 ``` php
 require '/vendor/autoload.php';
 ```
 
-You will need to retrieve your credentials in the Form Synergy console: https://formsynergy.com/console/
-
 ## To Load Package
-
+You will need to retrieve your credentials in the Form Synergy console: https://formsynergy.com/console/
 ``` PHP
-
-/**
- * Form Synergy Demo.
- * 
- * This package will load and initiate the demo package.
- */
 \FormSynergy\Fs_Demo([
     'strategy'      => '', // Eg: Form Synergy Demo
     'profileid'     => '', // You can find the profile id under the profile tab: https://formsynergy.com/console/
